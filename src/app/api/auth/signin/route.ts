@@ -43,11 +43,11 @@ export async function POST(req: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('Error during sign-in:', error);
+    const errorMessage = error instanceof Error ? error.message : error;
     return NextResponse.json(
       {
         status: false,
-        message: error?.message || 'Internal server error',
+        message: errorMessage || 'Internal server error',
         statusCode: 500,
       },
       { status: 500 }
