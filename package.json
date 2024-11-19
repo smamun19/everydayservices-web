@@ -12,7 +12,7 @@
     "lint": "eslint \"src/**/*.+(ts|js|tsx)\"",
     "format": "prettier . --write",
     "format:ci": "prettier --list-different .",
-    "postinstall": "husky"
+    "postinstall": "husky && prisma generate"
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
