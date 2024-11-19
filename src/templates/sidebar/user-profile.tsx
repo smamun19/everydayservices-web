@@ -12,10 +12,10 @@ export const UserProfile = () => {
       <Avatar />
       <Box>
         <Text textStyle="sm" fontWeight="medium">
-          {store.user.firstName} {store.user.lastName}
+          {store.user.name}
         </Text>
         <Text textStyle="sm" color="fg.muted">
-          {store.user.email ?? store.user.phone ?? store.user.username}
+          {store.user.email}
         </Text>
       </Box>
     </HStack>

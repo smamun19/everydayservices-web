@@ -8,6 +8,7 @@ export const verifyToken = (token: string) => {
     const decoded = jwt.verify(token, JWT_SECRET);
     return decoded;
   } catch (error) {
+    console.debug(error);
     return null;
   }
 };

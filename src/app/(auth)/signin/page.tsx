@@ -3,8 +3,6 @@
 import { Flex, Heading, Image, Input, Stack, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
 
 import { post } from '@/api';
 import { Button } from '@/components/ui/button';

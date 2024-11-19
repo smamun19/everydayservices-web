@@ -6,7 +6,7 @@ import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { BiRocket } from 'react-icons/bi';
-import { FaDashcube, FaDollarSign, FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaDashcube, FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { FaGears } from 'react-icons/fa6';
 
 import { ChakraNextImage } from '@/components/chakra-next-image';

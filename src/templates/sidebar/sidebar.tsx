@@ -3,7 +3,7 @@
 import { Bleed, Separator, Stack, Text } from '@chakra-ui/react';
 import { usePathname } from 'next/navigation';
 import { IconType } from 'react-icons';
-import { LuBook, LuClock, LuDollarSign, LuImage, LuLayoutDashboard, LuSettings } from 'react-icons/lu';
+import { LuImage, LuLayoutDashboard, LuSettings } from 'react-icons/lu';
 
 import { useRootStoreWithUser } from '@/stores/store-setup';
 import { SidebarLink } from './sidebar-link';
