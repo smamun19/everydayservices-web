@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Roles {
+  ADMIN
+  USER
+}
+
+model User {
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  email           String           @unique
+  contactInfo     String
+  roles           Roles[]          @default([USER])
+  address         String?
+  password        String
+  serviceRequests ServiceRequest[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  deletedAt       DateTime?
+}
+
+model ServiceRequest {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  userID      String    @db.ObjectId
+  serviceType String
+  status      String
+  description String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+  user        User      @relation(fields: [userID], references: [id])
+}
+
+model PrivacyModule {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  encryptionKey  String
+  anonymizedData String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+}
+
+model ServiceProvider {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  skills       String[]
+  availability Boolean
+  rating       Float
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+}
+
+model RequestManagement {
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  activeRequests    Int
+  completedRequests Int
+  escalatedRequests Int
+}
+
+model AuditLog {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  logEntries String
+  action     String
+  userID     String    @db.ObjectId
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+}
+
+model ReportGeneration {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  reportType String
+  content    String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+}
+
+model UserManagement {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  userList       String[]
+  suspendedUsers String[]
+}
